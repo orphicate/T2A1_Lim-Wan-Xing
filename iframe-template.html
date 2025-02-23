@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes">
+    <title>Your title here</title>
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #F0F0F0;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            overflow: hidden;
+        }
+
+        /* Fullscreen button styling */
+        #fullscreen-btn {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background-color: #ff66b2;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 10px;
+            cursor: pointer;
+            font-size: 16px;
+            z-index: 10;
+        }
+
+        #fullscreen-btn:hover {
+            background-color: #ff80e0;
+        }
+
+        #container {
+            position: relative;
+            width: 960px;
+            height: 540px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            background-color: aliceblue;
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body>
+    <button id="fullscreen-btn">Go Fullscreen</button>
+
+    <!-- Embed GitHub website -->
+    <div id="container">
+        <iframe src="https://orphicate.github.io/T2A1_Lim-Wan-Xing_interactive-design/home.html" 
+                title="GitHub Project" allowfullscreen></iframe>
+    </div>
+
+    <!-- Add Background Music -->
+    <audio id="background-music" autoplay loop>
+        <source src="cyberpunk-ambient-music-236385.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+
+    <script>
+        const fullscreenBtn = document.getElementById("fullscreen-btn");
+
+        fullscreenBtn.addEventListener("click", () => {
+            const iframeElement = document.querySelector("iframe");
+
+            if (iframeElement.requestFullscreen) {
+                iframeElement.requestFullscreen();
+            } else if (iframeElement.mozRequestFullScreen) { // Firefox
+                iframeElement.mozRequestFullScreen();
+            } else if (iframeElement.webkitRequestFullscreen) { // Chrome, Safari, Opera
+                iframeElement.webkitRequestFullscreen();
+            } else if (iframeElement.msRequestFullscreen) { // IE/Edge
+                iframeElement.msRequestFullscreen();
+            }
+        });
+    </script>
+</body>
+</html>
+
